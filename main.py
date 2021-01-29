@@ -22,7 +22,7 @@ cursor = cnx.cursor()
 # user.save(cursor)
 
 # Load by id
-# user = User.load_by_id(2)
+# user = User.load_by_id(cursor, 2)
 
 # Load all users
 # users = User.load_all(cursor)
@@ -39,5 +39,7 @@ cursor = cnx.cursor()
 # user = User.load_by_id(cursor, 4)
 # user.delete(cursor)
 
-
+# Checked Credential
+user = User.load_by_id(cursor, 5)
+is_matched = user.check_password("secret")
 

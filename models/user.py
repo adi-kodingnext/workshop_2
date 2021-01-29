@@ -1,3 +1,6 @@
+import clcrypto
+
+
 class User:
     
     def __init__(self):
@@ -15,7 +18,10 @@ class User:
         return self._hashed_password
 
     def set_password(self, password):
-        self._hashed_password = password
+        self._hashed_password = clcrypto.password_hash(password)
+
+    def check_password(self, password):
+        return clcrypto.check_password(password, self.hashed_password)
 
     def save(self, cursor):
         if self.id == -1:
